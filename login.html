@@ -549,35 +549,13 @@ body{
     margin-bottom:
         clamp(9px,1vw,15px);
 
-    background:
-        linear-gradient(
-            135deg,
-            #dffaff,
-            #2878ec,
-            #8fe9ff,
-            #2867d8,
-            #dffaff
-        );
+    background: #2878ec;
+
+    border: 3px solid #8fe9ff;
 
     box-shadow:
-
         0 0 15px
-        rgba(46,141,255,.35),
-
-        0 0 28px
-        rgba(46,141,255,.18);
-
-    animation:
-        profileRotate
-        5s linear infinite;
-}
-
-@keyframes profileRotate{
-
-    to{
-        transform:
-            rotate(360deg);
-    }
+        rgba(46,141,255,.25);
 }
 
 
@@ -675,7 +653,7 @@ body{
     height:
         clamp(43px,4.5vw,62px);
 
-    border:0;
+    border:2px solid transparent;
     outline:0;
 
     border-radius:13px;
@@ -694,19 +672,14 @@ body{
         clamp(12px,1.25vw,17px);
 
     transition:
+        border-color .2s ease,
         box-shadow .2s ease;
 }
 
 
 .input-wrap.active .input{
-
-    box-shadow:
-
-        0 0 0 2px
-        #27d17c,
-
-        0 0 15px
-        rgba(39,209,124,.45);
+    border-color: #27d17c;
+    box-shadow: 0 0 8px rgba(39,209,124,.3);
 }
 
 .input::placeholder{
@@ -739,7 +712,6 @@ body{
 ===================================================== */
 
 .password-toggle{
-
     position:absolute;
 
     right:
@@ -750,42 +722,17 @@ body{
     transform:
         translateY(-50%);
 
-    width:9px;
-    height:9px;
+    border: 0;
 
-    min-width:9px;
-    min-height:9px;
+    background: transparent;
 
-    padding:0;
+    color: #9fffc0;
 
-    border-radius:50%;
+    font-size: 11px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.95);
+    font-weight: 700;
 
-    background:transparent;
-
-    cursor:pointer;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    transition:
-        background .15s ease,
-        box-shadow .15s ease;
-}
-
-
-.password-toggle.show{
-
-    background:#ffffff;
-
-    box-shadow:
-        0 0 4px
-        rgba(255,255,255,.45);
+    cursor: pointer;
 }
 
 
@@ -1081,7 +1028,7 @@ body{
             clamp(38px,8vw,50px);
 
         padding-left:38px;
-        padding-right:30px;
+        padding-right:45px;
 
         border-radius:10px;
     }
@@ -1090,20 +1037,6 @@ body{
     .input-icon{
 
         left:11px;
-    }
-
-
-    .password-toggle{
-
-        right:8px;
-
-        width:7px;
-        height:7px;
-
-        min-width:7px;
-        min-height:7px;
-
-        border-width:1px;
     }
 
 
@@ -1204,16 +1137,6 @@ body{
 
     .zone{
         font-size:7px;
-    }
-
-
-    .password-toggle{
-
-        width:6px;
-        height:6px;
-
-        min-width:6px;
-        min-height:6px;
     }
 }
 
@@ -1385,8 +1308,8 @@ body{
                         type="button"
                         class="password-toggle"
                         id="passwordToggle"
-                        aria-label="Show or hide password"
                         onclick="togglePassword()">
+                        SHOW
                     </button>
 
                 </div>
@@ -1442,7 +1365,7 @@ body{
 
 
                 <a
-                    href="/register"
+                    href="registration.html"
                     class="register">
 
                     <span class="register-icon">
@@ -1557,20 +1480,14 @@ function updateClock(){
         .getElementById("digitalTime")
         .textContent =
 
-        `${get("hour")}:
-         ${get("minute")}:
-         ${get("second")}`
-         .replace(/\s/g,"");
+        `${get("hour")}:${get("minute")}:${get("second")}`;
 
 
     document
         .getElementById("date")
         .textContent =
 
-        `${get("weekday")},
-         ${get("day")}
-         ${get("month")}
-         ${get("year")}`;
+        `${get("weekday")}, ${get("day")} ${get("month")} ${get("year")}`;
 }
 
 
@@ -1643,7 +1560,7 @@ function togglePassword(){
 
         password.type = "text";
 
-        button.classList.add("show");
+        button.textContent = "HIDE";
 
     }
 
@@ -1651,7 +1568,7 @@ function togglePassword(){
 
         password.type = "password";
 
-        button.classList.remove("show");
+        button.textContent = "SHOW";
 
     }
 
@@ -1666,7 +1583,7 @@ function togglePassword(){
 function forgotPassword(){
 
     alert(
-        "Password recovery will be available here."
+        "Password recovery feature is under development."
     );
 
 }
@@ -1675,19 +1592,7 @@ function forgotPassword(){
 
 /* =====================================================
    LOGIN SYSTEM
-   ORIGINAL LOGIC + COMPATIBILITY LOGIC
 ===================================================== */
-
-/*
-   এই অংশে Registration page-এর saved data
-   বিভিন্ন সম্ভাব্য localStorage key থেকে খোঁজা হবে।
-
-   মূল key:
-   portal_registered_user
-
-   এছাড়াও compatibility হিসেবে
-   common key-গুলো পরীক্ষা করা হবে।
-*/
 
 function getRegisteredUserData(){
 
@@ -1739,13 +1644,6 @@ function getRegisteredUserData(){
                         savedData
                     );
 
-
-                /*
-                   যদি Array থাকে,
-                   তাহলে প্রথমে matching account
-                   login system পরে খুঁজে নেবে।
-                */
-
                 if(
                     parsedData
                 ){
@@ -1758,10 +1656,7 @@ function getRegisteredUserData(){
 
             catch(error){
 
-                /*
-                   JSON না হলেও
-                   এই key skip করা হবে
-                */
+                /* Skip invalid JSON */
 
             }
 
@@ -1775,15 +1670,6 @@ function getRegisteredUserData(){
 }
 
 
-
-/* =====================================================
-   GET FIELD VALUE
-===================================================== */
-
-/*
-   Registration page-এর field name ভিন্ন হলে
-   এই function বিভিন্ন সম্ভাব্য নাম পরীক্ষা করবে।
-*/
 
 function getUserField(
     user,
@@ -1830,7 +1716,7 @@ function getUserField(
 
 
 /* =====================================================
-   CHECK ONE ACCOUNT
+   CHECK ONE ACCOUNT (SYNTAX FIXED)
 ===================================================== */
 
 function checkAccountLogin(
@@ -1924,11 +1810,8 @@ function checkAccountLogin(
         savedPassword;
 
 
-    return
-
-        usernameMatched
-        &&
-        passwordMatched;
+    /* FIXED: return line break removed */
+    return usernameMatched && passwordMatched;
 
 }
 
@@ -1944,16 +1827,8 @@ document
         "submit",
         function(e){
 
-            /*
-               Prevent normal form submission
-            */
-
             e.preventDefault();
 
-
-            /* =================================================
-               GET INPUTS
-            ================================================= */
 
             const usernameInput =
                 document.querySelector(
@@ -1978,16 +1853,10 @@ document
 
 
 
-            /* =================================================
-               GET REGISTERED ACCOUNT
-            ================================================= */
-
             const savedUserData =
                 getRegisteredUserData();
 
 
-
-            /* No account found */
 
             if(
                 !savedUserData
@@ -2007,10 +1876,6 @@ document
                 null;
 
 
-
-            /* =================================================
-               IF MULTIPLE ACCOUNTS ARRAY
-            ================================================= */
 
             if(
                 Array.isArray(
@@ -2053,12 +1918,6 @@ document
 
             }
 
-
-
-            /* =================================================
-               SINGLE ACCOUNT
-            ================================================= */
-
             else{
 
                 if(
@@ -2084,27 +1943,15 @@ document
 
 
 
-            /* =================================================
-               LOGIN SUCCESS
-            ================================================= */
-
             if(
                 matchedUser
             ){
-
-                /*
-                   Give permission to enter index.html
-                */
 
                 localStorage.setItem(
                     "portal_home_access_granted",
                     "true"
                 );
 
-
-                /*
-                   Get username safely
-                */
 
                 const currentUsername =
                     getUserField(
@@ -2127,29 +1974,17 @@ document
                     );
 
 
-                /*
-                   Save current username
-                */
-
                 localStorage.setItem(
                     "portal_current_user",
                     currentUsername
                 );
 
 
-                /*
-                   Optional login state
-                */
-
                 localStorage.setItem(
                     "portal_user_logged_in",
                     "true"
                 );
 
-
-                /*
-                   Remember Me logic
-                */
 
                 const rememberCheckbox =
                     document.querySelector(
@@ -2179,18 +2014,10 @@ document
                 }
 
 
-                /*
-                   Login successful
-                */
-
                 alert(
                     "Login successful!"
                 );
 
-
-                /*
-                   Automatically open home page
-                */
 
                 window.location.href =
                     "index.html";
@@ -2200,17 +2027,7 @@ document
 
             }
 
-
-
-            /* =================================================
-               LOGIN FAILED
-            ================================================= */
-
             else{
-
-                /*
-                   Remove old successful login permission
-                */
 
                 localStorage.removeItem(
                     "portal_home_access_granted"
@@ -2227,10 +2044,6 @@ document
                 );
 
 
-                /*
-                   Put cursor back into password field
-                */
-
                 passwordInput.focus();
 
             }
@@ -2242,7 +2055,6 @@ document
 
 /* =====================================================
    AUTO FILL REMEMBERED USER
-   NEW LOGIC
 ===================================================== */
 
 window.addEventListener(
@@ -2303,16 +2115,7 @@ document
         "click",
         function(e){
 
-            /*
-               Stop /register navigation
-            */
-
             e.preventDefault();
-
-
-            /*
-               Open registration page
-            */
 
             window.location.href =
                 "registration.html";
