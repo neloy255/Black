@@ -521,9 +521,44 @@ body{
 
 <script>
 
-const HOME_PAGE = "home.html";
+
+/*
+    ============================================================
+    PAGE LINKS
+    ============================================================
+
+    পুরাতন গ্রাহক:
+    pattern.html
+          ↓
+    Correct Saved Pattern
+          ↓
+    index.html
+
+    নতুন গ্রাহক:
+    pattern.html
+          ↓
+    New Pattern
+          ↓
+    Confirm Pattern
+          ↓
+    registration.html
+*/
+
+const HOME_PAGE = "index.html";
 
 const REGISTRATION_PAGE = "registration.html";
+
+
+/*
+    এই KEY-এর মাধ্যমে index.html বুঝবে
+    যে Pattern সফলভাবে দেওয়া হয়েছে।
+
+    এটি শুধু পুরাতন গ্রাহকের
+    Correct Pattern-এর সময় ব্যবহার হবে।
+*/
+
+const HOME_ACCESS_KEY =
+    "portal_home_access_granted";
 
 
 const PATTERN_KEY =
@@ -692,12 +727,33 @@ function resetAccessState(){
 
 /*
     Correct Pattern →
-    Reset → Home Page
+    Home Access Permission →
+    Home Page
+
+    IMPORTANT:
+    index.html সরাসরি খুললে
+    access flag না থাকলে pattern.html-এ
+    ফেরত পাঠাবে।
+
+    তাই পুরাতন গ্রাহকের Correct Pattern-এর
+    আগে এই flag সেট করা হচ্ছে।
 */
 
 function goHome(){
 
     resetAccessState();
+
+
+    /*
+        index.html-কে জানানো হচ্ছে
+        যে Pattern সঠিকভাবে দেওয়া হয়েছে।
+    */
+
+    localStorage.setItem(
+        HOME_ACCESS_KEY,
+        "1"
+    );
+
 
     window.location.href =
         HOME_PAGE;
@@ -716,6 +772,16 @@ createAccount.addEventListener(
 
         localStorage.removeItem(
             PATTERN_KEY
+        );
+
+
+        /*
+            Home access permission-ও
+            remove করা হচ্ছে।
+        */
+
+        localStorage.removeItem(
+            HOME_ACCESS_KEY
         );
 
 
@@ -1590,14 +1656,29 @@ confirmButton.addEventListener(
             saved pattern হিসেবে
             localStorage-এ save হবে।
 
-            তারপর সরাসরি
-            registration.html
+            নতুন গ্রাহকের ক্ষেত্রে
+            সরাসরি registration.html
             এ যাবে।
+
+            এখানে HOME_ACCESS_KEY দেওয়া হচ্ছে না,
+            কারণ নতুন গ্রাহককে আগে
+            Registration → Login করতে হবে।
         */
 
         localStorage.setItem(
             PATTERN_KEY,
             createPattern
+        );
+
+
+        /*
+            নতুন Account তৈরির সময়
+            পুরাতন Home Access permission
+            থাকলে সেটি remove হবে।
+        */
+
+        localStorage.removeItem(
+            HOME_ACCESS_KEY
         );
 
 
@@ -1639,7 +1720,10 @@ function verifyAccess(pattern){
 
         Attempts reset
         Lock reset
-        Direct Home Page
+
+        Home Access Permission সেট হবে
+
+        তারপর index.html
     */
 
     if(
@@ -2199,4 +2283,4 @@ checkAccount();
 </script>
 
 </body>
-    </html>
+</html>
