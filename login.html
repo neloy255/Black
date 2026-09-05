@@ -62,10 +62,6 @@ body{
 
 /* =====================================================
    MAIN PAGE
-
-   IMPORTANT:
-   CLOCK = LEFT
-   LOGIN = RIGHT
 ===================================================== */
 
 .page{
@@ -86,8 +82,6 @@ body{
         clamp(10px,2vw,30px);
 }
 
-
-/* Background glow */
 
 .page::before{
     content:"";
@@ -113,8 +107,6 @@ body{
     pointer-events:none;
 }
 
-
-/* Bottom light */
 
 .page::after{
     content:"";
@@ -168,8 +160,6 @@ body{
     min-width:0;
 }
 
-
-/* Clock size */
 
 .clock-frame{
     width:min(28vw,390px);
@@ -241,8 +231,6 @@ body{
 }
 
 
-/* Inner ring */
-
 .clock::before{
     content:"";
 
@@ -265,7 +253,6 @@ body{
 
 /* =====================================================
    CLOCK NUMBERS
-   NO TICK MARKS
 ===================================================== */
 
 .clock-number{
@@ -298,76 +285,22 @@ body{
 }
 
 
-/* Number positions */
-
-.n12{
-    left:50%;
-    top:10%;
-}
-
-.n1{
-    left:68%;
-    top:15%;
-}
-
-.n2{
-    left:82%;
-    top:27%;
-}
-
-.n3{
-    left:90%;
-    top:50%;
-}
-
-.n4{
-    left:82%;
-    top:73%;
-}
-
-.n5{
-    left:68%;
-    top:85%;
-}
-
-.n6{
-    left:50%;
-    top:91%;
-}
-
-.n7{
-    left:32%;
-    top:85%;
-}
-
-.n8{
-    left:18%;
-    top:73%;
-}
-
-.n9{
-    left:10%;
-    top:50%;
-}
-
-.n10{
-    left:18%;
-    top:27%;
-}
-
-.n11{
-    left:32%;
-    top:15%;
-}
+.n12{left:50%;top:10%;}
+.n1{left:68%;top:15%;}
+.n2{left:82%;top:27%;}
+.n3{left:90%;top:50%;}
+.n4{left:82%;top:73%;}
+.n5{left:68%;top:85%;}
+.n6{left:50%;top:91%;}
+.n7{left:32%;top:85%;}
+.n8{left:18%;top:73%;}
+.n9{left:10%;top:50%;}
+.n10{left:18%;top:27%;}
+.n11{left:32%;top:15%;}
 
 
 /* =====================================================
    CLOCK HANDS
-
-   THREE HANDS ONLY:
-   HOUR
-   MINUTE
-   SECOND
 ===================================================== */
 
 .hand{
@@ -389,40 +322,24 @@ body{
 }
 
 
-/* Hour */
-
 .hour-hand{
     width:5px;
-
     height:27%;
-
     background:#151b24;
 }
-
-
-/* Minute */
 
 .minute-hand{
     width:4px;
-
     height:37%;
-
     background:#151b24;
 }
 
-
-/* Second */
-
 .second-hand{
     width:1.5px;
-
     height:42%;
-
     background:#2b5fc7;
 }
 
-
-/* Center */
 
 .clock-center{
     position:absolute;
@@ -541,10 +458,6 @@ body{
         clamp(5px,1vw,20px);
 }
 
-
-/* =====================================================
-   LOGIN CARD
-===================================================== */
 
 .login-card{
     width:min(43vw,650px);
@@ -785,10 +698,6 @@ body{
 }
 
 
-/* =====================================================
-   STATIC GREEN FOCUS
-===================================================== */
-
 .input-wrap.active .input{
 
     box-shadow:
@@ -804,8 +713,6 @@ body{
     color:#c7d0e0;
 }
 
-
-/* Left input icon */
 
 .input-icon{
     position:absolute;
@@ -829,7 +736,6 @@ body{
 
 /* =====================================================
    PASSWORD BUTTON
-   VERY SMALL ROUND DOT
 ===================================================== */
 
 .password-toggle{
@@ -872,8 +778,6 @@ body{
         box-shadow .15s ease;
 }
 
-
-/* When password is visible */
 
 .password-toggle.show{
 
@@ -1086,9 +990,6 @@ body{
 
 /* =====================================================
    SMALL SCREENS
-
-   CLOCK REMAINS LEFT
-   LOGIN REMAINS RIGHT
 ===================================================== */
 
 @media(max-width:700px){
@@ -1233,8 +1134,6 @@ body{
     }
 
 
-    /* Smaller clock hands */
-
     .hour-hand{
         width:3.5px;
     }
@@ -1253,10 +1152,6 @@ body{
     }
 }
 
-
-/* =====================================================
-   VERY SMALL SCREEN
-===================================================== */
 
 @media(max-width:380px){
 
@@ -1328,63 +1223,31 @@ body{
 
 <body>
 
-
-<!-- =====================================================
-     MAIN PAGE
-===================================================== -->
-
 <div class="page">
-
-
-    <!-- =================================================
-         LEFT SIDE : CLOCK
-    ================================================= -->
 
     <section class="clock-area">
 
-
         <div class="clock-frame">
 
-
             <div class="clock">
-
-
-                <!-- ==============================
-                     CLOCK NUMBERS
-                =============================== -->
 
                 <div class="clock-number">
 
                     <span class="n12">12</span>
-
                     <span class="n1">1</span>
-
                     <span class="n2">2</span>
-
                     <span class="n3">3</span>
-
                     <span class="n4">4</span>
-
                     <span class="n5">5</span>
-
                     <span class="n6">6</span>
-
                     <span class="n7">7</span>
-
                     <span class="n8">8</span>
-
                     <span class="n9">9</span>
-
                     <span class="n10">10</span>
-
                     <span class="n11">11</span>
 
                 </div>
 
-
-                <!-- ==============================
-                     THREE CLOCK HANDS
-                =============================== -->
 
                 <div
                     class="hand hour-hand"
@@ -1404,22 +1267,14 @@ body{
                 </div>
 
 
-                <!-- CENTER -->
-
                 <div class="clock-center"></div>
-
 
             </div>
 
         </div>
 
 
-        <!-- =================================================
-             BANGLADESH DIGITAL TIME
-        ================================================= -->
-
         <div class="time-box">
-
 
             <div
                 class="date"
@@ -1445,27 +1300,15 @@ body{
 
             </div>
 
-
         </div>
-
 
     </section>
 
 
 
-    <!-- =================================================
-         RIGHT SIDE : LOGIN
-    ================================================= -->
-
     <section class="login-area">
 
-
         <div class="login-card">
-
-
-            <!-- ==============================
-                 WELCOME
-            =============================== -->
 
             <div class="welcome">
 
@@ -1480,18 +1323,12 @@ body{
             </div>
 
 
-            <!-- ==============================
-                 PROFILE
-            =============================== -->
-
             <div class="profile">
 
                 <div class="avatar"></div>
 
             </div>
 
-
-            <!-- LOGIN TITLE -->
 
             <div class="login-title">
                 LOGIN
@@ -1502,22 +1339,13 @@ body{
 
 
 
-            <!-- =================================================
-                 LOGIN FORM
-            ================================================= -->
-
             <form
                 class="form"
                 action="/login"
                 method="POST">
 
 
-                <!-- ==============================
-                     USERNAME
-                =============================== -->
-
                 <div class="input-wrap">
-
 
                     <span class="input-icon">
                         👤
@@ -1532,17 +1360,11 @@ body{
                         autocomplete="username"
                         required>
 
-
                 </div>
 
 
 
-                <!-- ==============================
-                     PASSWORD
-                =============================== -->
-
                 <div class="input-wrap">
-
 
                     <span class="input-icon">
                         🔒
@@ -1559,8 +1381,6 @@ body{
                         required>
 
 
-                    <!-- SMALL ROUND BUTTON -->
-
                     <button
                         type="button"
                         class="password-toggle"
@@ -1569,33 +1389,23 @@ body{
                         onclick="togglePassword()">
                     </button>
 
-
                 </div>
 
 
 
-                <!-- ==============================
-                     REMEMBER / FORGOT
-                ============================== -->
-
                 <div class="options">
 
-
                     <label class="remember">
-
 
                         <input
                             type="checkbox"
                             name="remember">
 
-
                         <span>
                             Remember Me
                         </span>
 
-
                     </label>
-
 
 
                     <button
@@ -1607,14 +1417,9 @@ body{
 
                     </button>
 
-
                 </div>
 
 
-
-                <!-- ==============================
-                     SIGN IN
-                ============================== -->
 
                 <button
                     type="submit"
@@ -1626,10 +1431,6 @@ body{
 
 
 
-                <!-- ==============================
-                     OR
-                ============================== -->
-
                 <div class="divider">
 
                     <span>
@@ -1640,34 +1441,23 @@ body{
 
 
 
-                <!-- ==============================
-                     CREATE NEW ACCOUNT
-                ============================== -->
-
                 <a
                     href="/register"
                     class="register">
-
 
                     <span class="register-icon">
                         👥
                     </span>
 
-
                     CREATE NEW ACCOUNT
-
 
                 </a>
 
-
             </form>
-
 
         </div>
 
-
     </section>
-
 
 </div>
 
@@ -1683,39 +1473,22 @@ function updateClock(){
 
     const now = new Date();
 
-
-    /*
-       Get current Bangladesh time.
-       Asia/Dhaka = Bangladesh Standard Time.
-    */
-
     const parts =
         new Intl.DateTimeFormat(
             "en-GB",
             {
                 timeZone:"Asia/Dhaka",
-
                 weekday:"long",
-
                 day:"2-digit",
-
                 month:"long",
-
                 year:"numeric",
-
                 hour:"2-digit",
-
                 minute:"2-digit",
-
                 second:"2-digit",
-
                 hour12:false
             }
         ).formatToParts(now);
 
-
-
-    /* Helper */
 
     function get(type){
 
@@ -1730,11 +1503,6 @@ function updateClock(){
     }
 
 
-
-    /* =================================================
-       GET TIME
-    ================================================= */
-
     const hour =
         Number(get("hour"));
 
@@ -1745,32 +1513,11 @@ function updateClock(){
         Number(get("second"));
 
 
-
-    /* =================================================
-       CALCULATE THREE HAND ANGLES
-    ================================================= */
-
-
-    /*
-       HOUR HAND
-
-       30 degrees per hour
-       + half degree per minute
-    */
-
     const hourAngle =
         ((hour % 12) * 30)
         +
         (minute * 0.5);
 
-
-
-    /*
-       MINUTE HAND
-
-       6 degrees per minute
-       + small movement for seconds
-    */
 
     const minuteAngle =
         (minute * 6)
@@ -1778,21 +1525,9 @@ function updateClock(){
         (second * 0.1);
 
 
-
-    /*
-       SECOND HAND
-
-       6 degrees every second
-    */
-
     const secondAngle =
         second * 6;
 
-
-
-    /* =================================================
-       MOVE HOUR HAND
-    ================================================= */
 
     document
         .getElementById("hourHand")
@@ -1802,11 +1537,6 @@ function updateClock(){
          rotate(${hourAngle}deg)`;
 
 
-
-    /* =================================================
-       MOVE MINUTE HAND
-    ================================================= */
-
     document
         .getElementById("minuteHand")
         .style.transform =
@@ -1815,11 +1545,6 @@ function updateClock(){
          rotate(${minuteAngle}deg)`;
 
 
-
-    /* =================================================
-       MOVE SECOND HAND
-    ================================================= */
-
     document
         .getElementById("secondHand")
         .style.transform =
@@ -1827,11 +1552,6 @@ function updateClock(){
         `translate(-50%, -100%)
          rotate(${secondAngle}deg)`;
 
-
-
-    /* =================================================
-       DIGITAL TIME
-    ================================================= */
 
     document
         .getElementById("digitalTime")
@@ -1842,11 +1562,6 @@ function updateClock(){
          ${get("second")}`
          .replace(/\s/g,"");
 
-
-
-    /* =================================================
-       DATE
-    ================================================= */
 
     document
         .getElementById("date")
@@ -1859,13 +1574,8 @@ function updateClock(){
 }
 
 
-
-/* Start clock */
-
 updateClock();
 
-
-/* Update every second */
 
 setInterval(
     updateClock,
@@ -1876,14 +1586,12 @@ setInterval(
 
 /* =====================================================
    INPUT FOCUS
-   STATIC GREEN GLOW
 ===================================================== */
 
 document
     .querySelectorAll(".input")
     .forEach(
         input => {
-
 
             input.addEventListener(
                 "focus",
@@ -1929,14 +1637,9 @@ function togglePassword(){
         document.getElementById("passwordToggle");
 
 
-
     if(
         password.type === "password"
     ){
-
-        /*
-           SHOW PASSWORD
-        */
 
         password.type = "text";
 
@@ -1946,15 +1649,12 @@ function togglePassword(){
 
     else{
 
-        /*
-           HIDE PASSWORD
-        */
-
         password.type = "password";
 
         button.classList.remove("show");
 
     }
+
 }
 
 
@@ -1972,20 +1672,271 @@ function forgotPassword(){
 }
 
 
+
 /* =====================================================
    LOGIN SYSTEM
-   ADDED CODE
+   ORIGINAL LOGIC + COMPATIBILITY LOGIC
 ===================================================== */
 
 /*
-   SIGN IN চাপলে আসল /login URL-এ যাবে না।
+   এই অংশে Registration page-এর saved data
+   বিভিন্ন সম্ভাব্য localStorage key থেকে খোঁজা হবে।
 
-   পরিবর্তে:
-   1. registration.html থেকে সেভ করা account খুঁজবে
-   2. Username অথবা Email মিলাবে
-   3. Password মিলাবে
-   4. সঠিক হলে index.html-এ পাঠাবে
+   মূল key:
+   portal_registered_user
+
+   এছাড়াও compatibility হিসেবে
+   common key-গুলো পরীক্ষা করা হবে।
 */
+
+function getRegisteredUserData(){
+
+    const possibleKeys = [
+
+        "portal_registered_user",
+
+        "registered_user",
+
+        "registeredUser",
+
+        "user",
+
+        "currentUser",
+
+        "account",
+
+        "accountData",
+
+        "registrationData"
+
+    ];
+
+
+    for(
+
+        let i = 0;
+
+        i < possibleKeys.length;
+
+        i++
+
+    ){
+
+        const savedData =
+            localStorage.getItem(
+                possibleKeys[i]
+            );
+
+
+        if(
+            savedData
+        ){
+
+            try{
+
+                const parsedData =
+                    JSON.parse(
+                        savedData
+                    );
+
+
+                /*
+                   যদি Array থাকে,
+                   তাহলে প্রথমে matching account
+                   login system পরে খুঁজে নেবে।
+                */
+
+                if(
+                    parsedData
+                ){
+
+                    return parsedData;
+
+                }
+
+            }
+
+            catch(error){
+
+                /*
+                   JSON না হলেও
+                   এই key skip করা হবে
+                */
+
+            }
+
+        }
+
+    }
+
+
+    return null;
+
+}
+
+
+
+/* =====================================================
+   GET FIELD VALUE
+===================================================== */
+
+/*
+   Registration page-এর field name ভিন্ন হলে
+   এই function বিভিন্ন সম্ভাব্য নাম পরীক্ষা করবে।
+*/
+
+function getUserField(
+    user,
+    fieldNames
+){
+
+    for(
+
+        let i = 0;
+
+        i < fieldNames.length;
+
+        i++
+
+    ){
+
+        const value =
+            user[
+                fieldNames[i]
+            ];
+
+
+        if(
+            value !== undefined
+            &&
+            value !== null
+            &&
+            String(value).trim() !== ""
+        ){
+
+            return String(
+                value
+            );
+
+        }
+
+    }
+
+
+    return "";
+
+}
+
+
+
+/* =====================================================
+   CHECK ONE ACCOUNT
+===================================================== */
+
+function checkAccountLogin(
+    user,
+    enteredUsername,
+    enteredPassword
+){
+
+    if(
+        !user
+        ||
+        typeof user !== "object"
+    ){
+
+        return false;
+
+    }
+
+
+    const savedUsername =
+        getUserField(
+            user,
+            [
+
+                "userName",
+
+                "username",
+
+                "user_name",
+
+                "name",
+
+                "fullName"
+
+            ]
+        )
+        .trim()
+        .toLowerCase();
+
+
+    const savedEmail =
+        getUserField(
+            user,
+            [
+
+                "email",
+
+                "emailAddress",
+
+                "email_address",
+
+                "userEmail"
+
+            ]
+        )
+        .trim()
+        .toLowerCase();
+
+
+    const savedPassword =
+        getUserField(
+            user,
+            [
+
+                "password",
+
+                "userPassword",
+
+                "pass",
+
+                "user_password"
+
+            ]
+        );
+
+
+    const usernameMatched =
+
+        enteredUsername ===
+        savedUsername
+
+        ||
+
+        enteredUsername ===
+        savedEmail;
+
+
+    const passwordMatched =
+
+        enteredPassword ===
+        savedPassword;
+
+
+    return
+
+        usernameMatched
+        &&
+        passwordMatched;
+
+}
+
+
+
+/* =====================================================
+   FORM SUBMIT
+===================================================== */
 
 document
     .querySelector(".form")
@@ -1993,7 +1944,9 @@ document
         "submit",
         function(e){
 
-            /* Prevent normal form submission */
+            /*
+               Prevent normal form submission
+            */
 
             e.preventDefault();
 
@@ -2029,99 +1982,105 @@ document
                GET REGISTERED ACCOUNT
             ================================================= */
 
-            const savedUser =
-                localStorage.getItem(
-                    "portal_registered_user"
-                );
+            const savedUserData =
+                getRegisteredUserData();
 
 
 
             /* No account found */
 
-            if(!savedUser){
+            if(
+                !savedUserData
+            ){
 
                 alert(
                     "No registered account found. Please create a new account first."
                 );
 
                 return;
+
             }
+
+
+
+            let matchedUser =
+                null;
 
 
 
             /* =================================================
-               READ SAVED ACCOUNT
+               IF MULTIPLE ACCOUNTS ARRAY
             ================================================= */
 
-            let user;
-
-
-            try{
-
-                user =
-                    JSON.parse(
-                        savedUser
-                    );
-
-            }
-
-            catch(error){
-
-                alert(
-                    "Account information is invalid. Please register again."
-                );
-
-                return;
-            }
-
-
-
-            /* =================================================
-               SAVED USERNAME
-            ================================================= */
-
-            const savedUsername =
-                String(
-                    user.userName || ""
+            if(
+                Array.isArray(
+                    savedUserData
                 )
-                .trim()
-                .toLowerCase();
+            ){
+
+                for(
+
+                    let i = 0;
+
+                    i < savedUserData.length;
+
+                    i++
+
+                ){
+
+                    if(
+
+                        checkAccountLogin(
+
+                            savedUserData[i],
+
+                            username,
+
+                            enteredPassword
+
+                        )
+
+                    ){
+
+                        matchedUser =
+                            savedUserData[i];
+
+                        break;
+
+                    }
+
+                }
+
+            }
 
 
 
             /* =================================================
-               SAVED EMAIL
+               SINGLE ACCOUNT
             ================================================= */
 
-            const savedEmail =
-                String(
-                    user.email || ""
-                )
-                .trim()
-                .toLowerCase();
+            else{
 
+                if(
 
+                    checkAccountLogin(
 
-            /* =================================================
-               USERNAME OR EMAIL CHECK
-            ================================================= */
+                        savedUserData,
 
-            const usernameMatched =
-                username === savedUsername
-                ||
-                username === savedEmail;
+                        username,
 
+                        enteredPassword
 
+                    )
 
-            /* =================================================
-               PASSWORD CHECK
-            ================================================= */
+                ){
 
-            const passwordMatched =
-                enteredPassword ===
-                String(
-                    user.password || ""
-                );
+                    matchedUser =
+                        savedUserData;
+
+                }
+
+            }
 
 
 
@@ -2130,8 +2089,7 @@ document
             ================================================= */
 
             if(
-                usernameMatched &&
-                passwordMatched
+                matchedUser
             ){
 
                 /*
@@ -2145,13 +2103,80 @@ document
 
 
                 /*
+                   Get username safely
+                */
+
+                const currentUsername =
+                    getUserField(
+                        matchedUser,
+                        [
+
+                            "userName",
+
+                            "username",
+
+                            "user_name",
+
+                            "name",
+
+                            "fullName",
+
+                            "email"
+
+                        ]
+                    );
+
+
+                /*
                    Save current username
                 */
 
                 localStorage.setItem(
                     "portal_current_user",
-                    user.userName
+                    currentUsername
                 );
+
+
+                /*
+                   Optional login state
+                */
+
+                localStorage.setItem(
+                    "portal_user_logged_in",
+                    "true"
+                );
+
+
+                /*
+                   Remember Me logic
+                */
+
+                const rememberCheckbox =
+                    document.querySelector(
+                        'input[name="remember"]'
+                    );
+
+
+                if(
+                    rememberCheckbox
+                    &&
+                    rememberCheckbox.checked
+                ){
+
+                    localStorage.setItem(
+                        "portal_remembered_user",
+                        usernameInput.value
+                    );
+
+                }
+
+                else{
+
+                    localStorage.removeItem(
+                        "portal_remembered_user"
+                    );
+
+                }
 
 
                 /*
@@ -2170,7 +2195,11 @@ document
                 window.location.href =
                     "index.html";
 
+
+                return;
+
             }
+
 
 
             /* =================================================
@@ -2185,6 +2214,11 @@ document
 
                 localStorage.removeItem(
                     "portal_home_access_granted"
+                );
+
+
+                localStorage.removeItem(
+                    "portal_user_logged_in"
                 );
 
 
@@ -2207,20 +2241,61 @@ document
 
 
 /* =====================================================
-   CREATE NEW ACCOUNT
-   ADDED CODE
+   AUTO FILL REMEMBERED USER
+   NEW LOGIC
 ===================================================== */
 
-/*
-   Existing HTML line:
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
 
-   href="/register"
+        const rememberedUser =
+            localStorage.getItem(
+                "portal_remembered_user"
+            );
 
-   আমরা সেটি ডিলিট করিনি।
 
-   JavaScript দিয়ে ক্লিকের সময়
-   registration.html খুলে দেব।
-*/
+        const usernameInput =
+            document.querySelector(
+                'input[name="username"]'
+            );
+
+
+        if(
+            rememberedUser
+            &&
+            usernameInput
+        ){
+
+            usernameInput.value =
+                rememberedUser;
+
+
+            const rememberCheckbox =
+                document.querySelector(
+                    'input[name="remember"]'
+                );
+
+
+            if(
+                rememberCheckbox
+            ){
+
+                rememberCheckbox.checked =
+                    true;
+
+            }
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   CREATE NEW ACCOUNT
+===================================================== */
 
 document
     .querySelector(".register")
