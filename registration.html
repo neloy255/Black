@@ -579,18 +579,26 @@ body{
 }
 
 
-/* FIX: Removed suspicious conic-gradient animation to prevent Safe Browsing flags */
 .profile:before{
 
   content:"";
 
   position:absolute;
 
-  inset:-3px;
+  inset:-7px;
 
   border-radius:50%;
 
-  border: 2px solid #20a9ff;
+  background:
+    conic-gradient(
+      #20a9ff,
+      #74d7ff,
+      #216cff,
+      #20a9ff
+    );
+
+  animation:
+    profileRing 4s linear infinite;
 
   z-index:-1;
 }
@@ -649,6 +657,15 @@ body{
   bottom:20px;
 
   z-index:2;
+}
+
+
+@keyframes profileRing{
+
+  to{
+    transform:rotate(360deg);
+  }
+
 }
 
 
@@ -746,21 +763,32 @@ body{
 
 
 /* =================================================
-   STATIC FOCUS EFFECT
+   STATIC GREEN FOCUS EFFECT
    ================================================= */
 
-/* FIX: Cleaned up heavy neon green glowing shadow that triggers phishing scanners */
 .field-wrap.active .field{
 
-  border-color:#216cff;
+  border-color:#27ff73;
 
   box-shadow:
 
     inset 3px 3px 8px
       rgba(0,0,0,.28),
 
-    0 0 0 3px
-      rgba(33,108,255,.30);
+    0 0 0 2px
+      rgba(39,255,115,.40),
+
+    0 0 12px
+      rgba(39,255,115,1),
+
+    0 0 28px
+      rgba(39,255,115,.90),
+
+    0 0 48px
+      rgba(39,255,115,.60),
+
+    0 0 70px
+      rgba(39,255,115,.30);
 }
 
 
