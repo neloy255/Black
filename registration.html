@@ -2558,6 +2558,25 @@ document
       );
 
 
+      /* =================================================
+         NEW ACCOUNT → LOGIN PAGE
+
+         Registration সফল হলে
+         সরাসরি login.html এ যাবে।
+
+         Home access flag পরিষ্কার করা হচ্ছে,
+         যাতে registration শেষ হওয়ার আগে
+         index.html সরাসরি খোলা না যায়।
+         ================================================= */
+
+      localStorage.removeItem(
+        'portal_home_access_granted'
+      );
+
+      window.location.href =
+        'login.html';
+
+
     }
   );
 
@@ -2576,9 +2595,13 @@ document
     () => {
 
 
-      alert(
-        'Sign In button clicked.'
-      );
+      /*
+       SIGN IN button চাপলে
+       login.html এ যাবে।
+      */
+
+      window.location.href =
+        'login.html';
 
 
     }
@@ -2588,4 +2611,4 @@ document
 </script>
 
 </body>
-  </html>
+</html>
