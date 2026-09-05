@@ -521,45 +521,12 @@ body{
 
 <script>
 
-
-/*
-    ============================================================
-    PAGE LINKS
-    ============================================================
-
-    পুরাতন গ্রাহক:
-    pattern.html
-          ↓
-    Correct Saved Pattern
-          ↓
-    index.html
-
-    নতুন গ্রাহক:
-    pattern.html
-          ↓
-    New Pattern
-          ↓
-    Confirm Pattern
-          ↓
-    registration.html
-*/
-
 const HOME_PAGE = "index.html";
 
 const REGISTRATION_PAGE = "registration.html";
 
-
-/*
-    এই KEY-এর মাধ্যমে index.html বুঝবে
-    যে Pattern সফলভাবে দেওয়া হয়েছে।
-
-    এটি শুধু পুরাতন গ্রাহকের
-    Correct Pattern-এর সময় ব্যবহার হবে।
-*/
-
 const HOME_ACCESS_KEY =
     "portal_home_access_granted";
-
 
 const PATTERN_KEY =
     "portal_saved_pattern";
@@ -572,19 +539,6 @@ const LOCK_UNTIL_KEY =
 
 const BLOCKED_KEY =
     "portal_account_blocked";
-
-
-/*
-    LOCK SYSTEM
-
-    1st wrong → 30 seconds
-    2nd wrong → 1 minute
-    3rd wrong → 5 minutes
-    4th wrong → 5 hours
-    5th wrong → 12 hours
-    6th wrong → 24 hours
-    7th wrong → Account Blocked
-*/
 
 const LOCK_TIMES = {
 
@@ -658,7 +612,6 @@ let repeatPattern = "";
 let countdownInterval = null;
 
 
-
 function showScreen(id){
 
     [
@@ -683,11 +636,6 @@ function showScreen(id){
 }
 
 
-
-/*
-    Current incorrect attempt count
-*/
-
 function getAttempts(){
 
     return parseInt(
@@ -698,12 +646,6 @@ function getAttempts(){
     );
 }
 
-
-
-/*
-    Correct Pattern দিলে
-    সম্পূর্ণ security cycle reset হবে।
-*/
 
 function resetAccessState(){
 
@@ -724,30 +666,10 @@ function resetAccessState(){
 }
 
 
-
-/*
-    Correct Pattern →
-    Home Access Permission →
-    Home Page
-
-    IMPORTANT:
-    index.html সরাসরি খুললে
-    access flag না থাকলে pattern.html-এ
-    ফেরত পাঠাবে।
-
-    তাই পুরাতন গ্রাহকের Correct Pattern-এর
-    আগে এই flag সেট করা হচ্ছে।
-*/
-
 function goHome(){
 
     resetAccessState();
 
-
-    /*
-        index.html-কে জানানো হচ্ছে
-        যে Pattern সঠিকভাবে দেওয়া হয়েছে।
-    */
 
     localStorage.setItem(
         HOME_ACCESS_KEY,
@@ -760,12 +682,6 @@ function goHome(){
 }
 
 
-
-/*
-    Blocked Screen থেকে
-    নতুন Account তৈরি।
-*/
-
 createAccount.addEventListener(
     "click",
     () => {
@@ -774,11 +690,6 @@ createAccount.addEventListener(
             PATTERN_KEY
         );
 
-
-        /*
-            Home access permission-ও
-            remove করা হচ্ছে।
-        */
 
         localStorage.removeItem(
             HOME_ACCESS_KEY
@@ -793,7 +704,6 @@ createAccount.addEventListener(
 
     }
 );
-
 
 
 function createPatternDrawer(
@@ -838,7 +748,6 @@ function createPatternDrawer(
     };
 
 
-
     for(
         let i = 1;
         i <= 9;
@@ -866,7 +775,6 @@ function createPatternDrawer(
             dot
         );
     }
-
 
 
     const pairs = {
@@ -898,7 +806,6 @@ function createPatternDrawer(
     };
 
 
-
     function pointFromEvent(e){
 
         const rect =
@@ -916,7 +823,6 @@ function createPatternDrawer(
 
         };
     }
-
 
 
     function findDot(x,y){
@@ -964,7 +870,6 @@ function createPatternDrawer(
     }
 
 
-
     function addPoint(point){
 
         if(
@@ -1004,7 +909,6 @@ function createPatternDrawer(
 
         updateVisuals();
     }
-
 
 
     function updateVisuals(){
@@ -1112,7 +1016,6 @@ function createPatternDrawer(
     }
 
 
-
     function clear(){
 
         points.length = 0;
@@ -1123,7 +1026,6 @@ function createPatternDrawer(
 
         updateVisuals();
     }
-
 
 
     function showError(){
@@ -1174,18 +1076,12 @@ function createPatternDrawer(
     }
 
 
-
     function finish(){
 
         drawing = false;
 
         currentPoint = null;
 
-
-        /*
-            4 points-এর কম হলে
-            Pattern valid হবে না।
-        */
 
         if(points.length < 4){
 
@@ -1205,7 +1101,6 @@ function createPatternDrawer(
 
         clear();
     }
-
 
 
     box.addEventListener(
@@ -1235,7 +1130,6 @@ function createPatternDrawer(
 
         }
     );
-
 
 
     box.addEventListener(
@@ -1275,7 +1169,6 @@ function createPatternDrawer(
     );
 
 
-
     box.addEventListener(
         "pointerup",
         e => {
@@ -1286,7 +1179,6 @@ function createPatternDrawer(
 
         }
     );
-
 
 
     box.addEventListener(
@@ -1306,7 +1198,6 @@ function createPatternDrawer(
 
     };
 }
-
 
 
 /*
@@ -1363,19 +1254,8 @@ const createDrawer =
     );
 
 
-
 /*
     REPEAT PATTERN
-
-    Repeat Pattern যদি
-    প্রথম Pattern-এর সাথে
-    match না করে,
-
-    তাহলে Error animation-এর পরে
-    আবার Create Pattern Screen-এ
-    নিয়ে যাবে।
-
-    অর্থাৎ নতুন Pattern তৈরি করতে হবে।
 */
 
 const repeatDrawer =
@@ -1416,11 +1296,6 @@ const repeatDrawer =
                     true;
 
 
-                /*
-                    Pattern empty হলে
-                    আগের মতোই invalid থাকবে।
-                */
-
                 if(!repeatPattern){
 
                     document
@@ -1434,12 +1309,6 @@ const repeatDrawer =
                 }
 
 
-                /*
-                    Pattern আলাদা হলে
-                    Error দেখিয়ে
-                    Create Pattern Screen-এ ফিরে যাবে।
-                */
-
                 document
                     .getElementById(
                         "repeatStatus"
@@ -1450,11 +1319,6 @@ const repeatDrawer =
 
                 repeatDrawer.showError();
 
-
-                /*
-                    Error animation শেষ হওয়ার
-                    সাথে সাথে নতুন Pattern Screen।
-                */
 
                 setTimeout(() => {
 
@@ -1502,7 +1366,6 @@ const repeatDrawer =
     );
 
 
-
 /*
     ACCESS PATTERN
 */
@@ -1527,7 +1390,6 @@ const accessDrawer =
         }
 
     );
-
 
 
 nextButton.addEventListener(
@@ -1568,7 +1430,6 @@ nextButton.addEventListener(
 );
 
 
-
 confirmButton.addEventListener(
     "click",
     () => {
@@ -1586,11 +1447,6 @@ confirmButton.addEventListener(
             createPattern !==
             repeatPattern
         ){
-
-            /*
-                Safety check:
-                mismatch হলে আবার Create Screen।
-            */
 
             document
                 .getElementById(
@@ -1649,33 +1505,11 @@ confirmButton.addEventListener(
         }
 
 
-        /*
-            Pattern successfully confirmed.
-
-            Correct Pattern হলে
-            saved pattern হিসেবে
-            localStorage-এ save হবে।
-
-            নতুন গ্রাহকের ক্ষেত্রে
-            সরাসরি registration.html
-            এ যাবে।
-
-            এখানে HOME_ACCESS_KEY দেওয়া হচ্ছে না,
-            কারণ নতুন গ্রাহককে আগে
-            Registration → Login করতে হবে।
-        */
-
         localStorage.setItem(
             PATTERN_KEY,
             createPattern
         );
 
-
-        /*
-            নতুন Account তৈরির সময়
-            পুরাতন Home Access permission
-            থাকলে সেটি remove হবে।
-        */
 
         localStorage.removeItem(
             HOME_ACCESS_KEY
@@ -1690,7 +1524,6 @@ confirmButton.addEventListener(
 
     }
 );
-
 
 
 /*
@@ -1715,17 +1548,6 @@ function verifyAccess(pattern){
     }
 
 
-    /*
-        Correct Pattern হলে:
-
-        Attempts reset
-        Lock reset
-
-        Home Access Permission সেট হবে
-
-        তারপর index.html
-    */
-
     if(
         pattern === savedPattern
     ){
@@ -1736,30 +1558,20 @@ function verifyAccess(pattern){
     }
 
 
+    accessDrawer.showError();
+
     wrongAccessAttempt();
 }
 
 
-
 /*
     WRONG PATTERN SYSTEM
-
-    1 → 30 Seconds
-    2 → 1 Minute
-    3 → 5 Minutes
-    4 → 5 Hours
-    5 → 12 Hours
-    6 → 24 Hours
-    7 → Permanently Blocked
 */
 
 function wrongAccessAttempt(){
 
     const attempts =
         getAttempts() + 1;
-
-
-    accessDrawer.clear();
 
 
     document
@@ -1769,11 +1581,6 @@ function wrongAccessAttempt(){
         .textContent =
         "Incorrect pattern ✕";
 
-
-    /*
-        7th Wrong Attempt
-        Account Blocked
-    */
 
     if(attempts >= 7){
 
@@ -1807,11 +1614,6 @@ function wrongAccessAttempt(){
     }
 
 
-    /*
-        1st থেকে 6th Wrong Attempt
-        নির্দিষ্ট সময়ের Lock।
-    */
-
     localStorage.setItem(
         ATTEMPT_KEY,
         String(attempts)
@@ -1835,16 +1637,19 @@ function wrongAccessAttempt(){
     );
 
 
-    startLiveCountdown(
-        lockUntil
-    );
+    setTimeout(() => {
+
+        startLiveCountdown(
+            lockUntil
+        );
 
 
-    showScreen(
-        "lockScreen"
-    );
+        showScreen(
+            "lockScreen"
+        );
+
+    }, 450);
 }
-
 
 
 /*
@@ -1878,11 +1683,6 @@ function formatTime(ms){
         total % 60;
 
 
-    /*
-        Hours থাকলে
-        HH:MM:SS
-    */
-
     if(h > 0){
 
         return [
@@ -1906,11 +1706,6 @@ function formatTime(ms){
     }
 
 
-    /*
-        Minutes/Seconds
-        MM:SS
-    */
-
     return [
 
         String(m).padStart(
@@ -1925,7 +1720,6 @@ function formatTime(ms){
 
     ].join(":");
 }
-
 
 
 /*
@@ -1948,10 +1742,6 @@ function startLiveCountdown(
             Date.now();
 
 
-        /*
-            Lock শেষ।
-        */
-
         if(remaining <= 0){
 
             clearInterval(
@@ -1963,13 +1753,6 @@ function startLiveCountdown(
                 LOCK_UNTIL_KEY
             );
 
-
-            /*
-                Attempts reset হবে না।
-
-                পরবর্তী ভুল হলে
-                পরবর্তী Step-এর Lock হবে।
-            */
 
             accessDrawer.clear();
 
@@ -2025,7 +1808,6 @@ function startLiveCountdown(
 }
 
 
-
 /*
     PAGE LOAD CHECK
 */
@@ -2056,10 +1838,6 @@ function checkAccount(){
         );
 
 
-    /*
-        Blocked Account
-    */
-
     if(blocked){
 
         showScreen(
@@ -2069,11 +1847,6 @@ function checkAccount(){
         return;
     }
 
-
-    /*
-        No Pattern →
-        Create Pattern Screen
-    */
 
     if(!savedPattern){
 
@@ -2097,10 +1870,6 @@ function checkAccount(){
     }
 
 
-    /*
-        Lock চলছে।
-    */
-
     if(
         lockUntil > Date.now()
     ){
@@ -2117,13 +1886,6 @@ function checkAccount(){
         return;
     }
 
-
-    /*
-        Lock শেষ হয়ে গেলে
-        Lock remove হবে।
-
-        Attempts থাকবে।
-    */
 
     if(
         lockUntil &&
@@ -2148,17 +1910,14 @@ function checkAccount(){
         `Incorrect Attempts: ${attempts} / 7`;
 
 
+    accessDrawer.clear();
+
+
     showScreen(
         "accessScreen"
     );
 }
 
-
-
-/*
-    App/Tab-এ ফিরে আসলে
-    Lock আবার Check হবে।
-*/
 
 document.addEventListener(
     "visibilitychange",
@@ -2178,10 +1937,6 @@ document.addEventListener(
                 BLOCKED_KEY
             ) === "true";
 
-
-        /*
-            Account Blocked হলে।
-        */
 
         if(blocked){
 
@@ -2205,10 +1960,6 @@ document.addEventListener(
             );
 
 
-        /*
-            Lock এখনো চলছে।
-        */
-
         if(
             lockUntil > Date.now()
         ){
@@ -2224,10 +1975,6 @@ document.addEventListener(
 
         }
 
-
-        /*
-            Lock শেষ।
-        */
 
         else if(lockUntil){
 
@@ -2272,11 +2019,6 @@ document.addEventListener(
     }
 );
 
-
-
-/*
-    Initial Page Load
-*/
 
 checkAccount();
 
